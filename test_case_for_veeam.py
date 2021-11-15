@@ -1,5 +1,4 @@
 import subprocess
-import re
 import time
 import json
 import os
