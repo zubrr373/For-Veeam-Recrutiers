@@ -91,8 +91,7 @@ if __name__ == '__main__':
     save_to_json[2] = stop_time
     absFilePath = os.path.abspath(__file__)
     path, _ = os.path.split(absFilePath)
-    os.chdir(path)
-    print(os.getcwd()) 
+    os.chdir(path) 
     with open("resource_data_file.json", "a") as write_file:
         json.dump(save_to_json, write_file)
     
