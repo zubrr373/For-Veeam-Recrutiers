@@ -79,7 +79,8 @@ def time_line(name, period):
     
 if __name__ == '__main__':
     name, period, path = inp()
-    save_to_json = []
+    start_time = time.time()
+    save_to_json = [name, start_time, 0]
     with subprocess.Popen([name]) as proc:
         while subprocess.Popen.poll(proc) is None:
             data = time_line(name, period)
@@ -87,6 +88,8 @@ if __name__ == '__main__':
             for _i in data:
                 print(_i + ':', data[_i])
             print()
+    stop_time = time.time()
+    save_to_json[2] = stop_time
     absFilePath = os.path.abspath(__file__)
     path, _ = os.path.split(absFilePath)
     os.chdir(path)
