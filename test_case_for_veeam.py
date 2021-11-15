@@ -31,7 +31,7 @@ def inp():
             break
         else:
             print('Вы ввели неверное значение, придётся ввести заново')
-    return filename, period, path
+    return filename, period, abs_path
 
 def one_time_data(name, period):
     args_cpu = ["powershell", command_cpu(name), 'Get-CPUPercent']
@@ -80,7 +80,7 @@ if __name__ == '__main__':
     name, period, path = inp()
     start_time = time.time()
     save_to_json = [name, start_time, 0]
-    with subprocess.Popen([name]) as proc:
+    with subprocess.Popen([path]) as proc:
         while subprocess.Popen.poll(proc) is None:
             data = time_line(name, period)
             save_to_json.append(data)
